@@ -1,0 +1,36 @@
+<div class="product-card-wrapper">
+    <div class="product-card test">
+        <div class="product-card__price-wrapper">
+            {% if product.compare_at_price > product.price %}
+                <s class="product-card__price price-original">
+                {{ product.compare_at_price | money }}
+                </s>
+            {% endif %}
+            <p class="product-card__price {% if product.compare_at_price > product.price %}price-sale{% endif %}">
+                {{ product.price | money }}
+            </p>
+        </div>
+        <p class="product-card__vendor">{{ product.vendor }}</p>
+        {% assign title_color = product.metafields.boa_test.title_color.value | default: '#FF0000' %}
+        <h3 class="product-card__title">
+            <a style="color: {{ title_color }}" href="{{ product.url }}">{{ product.title }}</a>
+        </h3>
+
+        {% if product.featured_image %}
+            <a class="product-card__img-wrapper" href="{{ product.url }}">
+            <img
+                width="100%"
+                height="100%"
+                src="{{ product.featured_image | image_url: width: 400 }}"
+                alt="{{ product.featured_image.alt }}">
+            </a>
+        {% endif %}
+
+        <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="add-to-cart-btn button button__primary">Add to Cart</button>
+        </form>
+    </div>
+    <div id="product-{{ product.id }}-placeholder"></div>
+</div>
