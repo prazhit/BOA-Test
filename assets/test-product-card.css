@@ -26,7 +26,7 @@
     text-decoration: none;
 }
 
-.product-card.test .product-card__price-wrapper{
+.product-card.test .product-card__price-wrapper {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -39,21 +39,23 @@
     font-size: 17px;
     margin: 0;
 }
+
 .product-card.test .price-original {
     color: #888;
     font-weight: lighter;
 }
+
 .product-card.test .price-sale {
     color: #e74c3c;
 }
 
-.product-card.test .product-card__vendor{
+.product-card.test .product-card__vendor {
     text-transform: uppercase;
     margin: 8px 0 15px;
     font-size: 14px;
     color: #333;
 }
 
-.product-card.test .add-to-cart-btn{
+.product-card.test .add-to-cart-btn {
     width: 100%;
 }

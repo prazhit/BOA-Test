@@ -58,17 +58,18 @@
     {% endif %}
 
     {% if template.name == 'collection' %}
-        {% assign products_to_show = collection.products %}
-        {% assign product_limit = 10 %}
+      {% assign products_to_show = collection.products %}
+      {% assign product_limit = 10 %}
     {% else %}
-        {% assign products_to_show = section.settings.product_list %}
-        {% assign product_limit = null %}
+      {% assign products_to_show = section.settings.product_list %}
+      {% assign product_limit = null %}
     {% endif %}
 
     {% if products_to_show != blank %}
       <div class="product-grid">
         {% for product in products_to_show limit: product_limit %}
-            {% render 'test-product-card', product: product %}
+          {% render 'test-product-card'
+            , product: product %}
         {% endfor %}
       </div>
     {% endif %}
@@ -134,7 +135,7 @@
       }
     ],
     "enabled_on": {
-        "templates": ["index", "page", "product", "collection"]
+      "templates": ["index", "page", "product", "collection"]
     }
   }
 {% endschema %}
