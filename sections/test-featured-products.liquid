@@ -57,12 +57,12 @@
       <p class="subtitle">{{ section.settings.subtitle | escape }}</p>
     {% endif %}
 
-    {% if template.name == 'collection' %}
-      {% assign products_to_show = collection.products %}
-      {% assign product_limit = 10 %}
-    {% else %}
-      {% assign products_to_show = section.settings.product_list %}
-      {% assign product_limit = null %}
+    {% assign products_to_show = section.settings.product_list %}
+    {% assign product_limit = null %}
+
+    {% if products_to_show == blank and template.name == 'collection' %}
+        {% assign products_to_show = collection.products %}
+        {% assign product_limit = 10 %}
     {% endif %}
 
     {% if products_to_show != blank %}
